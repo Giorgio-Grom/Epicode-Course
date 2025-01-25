@@ -1,72 +1,169 @@
-/*
-REGOLE
-- Tutte le risposte devono essere scritte in JavaScript
-- Se sei in difficoltà puoi chiedere aiuto a un Teaching Assistant
-- Puoi usare Google / StackOverflow ma solo quanto ritieni di aver bisogno di qualcosa che non è stato spiegato a lezione
-- Puoi testare il tuo codice in un file separato, o de-commentando un esercizio alla volta
-- Per farlo puoi utilizzare il terminale Bash, quello di VSCode o quello del tuo sistema operativo (se utilizzi macOS o Linux)
-*/
+//ESERCIZI SUGLI IF: 
 
 /* ESERCIZIO 1
- Elenca e descrivi i principali datatype in JavaScript. Prova a spiegarli come se volessi farli comprendere a un bambino.
+ Scrivi un algoritmo per trovare il piÃ¹ grande tra due numeri interi.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+let number = 10
+let numberOne = 20
+
+if (number > numberOne) {
+    console.log('number is greater')
+} else {
+    console.log('number is lower')
+}
+
+
+/*
+ESERCIZIO 2
+  Crea un blocco condizionale if/else per mostrare in console il messaggio corretto in ogni condizione.
+
+  num < 5 - mostra in console "Tiny"
+  num < 10 - mostra in console "Small"
+  num < 15 - mostra in console "Medium"
+  num < 20 - mostra in console "Large"
+  num >= 20 - mostra in console "Huge"
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/* Numbers, strings, null, undefined, boolean, symbols. sono i tipi di dati con la quale lavoriamo su javascript */
+let num = 12
 
-/* ESERCIZIO 2
- Descrivi cos'è un oggetto in JavaScript, con parole tue.
-*/
+if (num < 5) {
+    console.log('tiny');
+} else if (num < 10) {
+    console.log('Small');
+} else if (num < 15) {
+    console.log ('medium');
+} else if (num < 20) {
+    console.log ('Large');
+} else {
+    console.log('Huge')
+}
 
-/* SCRIVI QUI LA TUA RISPOSTA */
 
-/* un oggetto è un insieme di dati differenti che vanno a definire un dato padre */
+//ESERCIZI SUI CICLI: 
 
 /* ESERCIZIO 3
- Scriti il codice necessario ad effettuare un addizione (una somma) dei numeri 12 e 20.
+  Mostra i numeri da 0 a 10 (incluso) in ordine ascendente, ma evitando di mostrare i numeri 3 e 8 (suggerimento: ripassa l'uso di "continue").
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+for (let num = 0 ; num <= 10 ; num++) {
+    if (num === 3 || num === 8) { continue } console.log(num)
+}
+
+/* ESERCIZIO 11
+  Scrivi un ciclo in JavaScript per iterare da 0 a 15. Per ciascun elemento, il ciclo deve controllare the il valore corrente sia pari o dispari, e mostrare il risultato in console.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-console.log(12 + 20)
+for (let num = 0; num <= 15 ; num++){
+    if (num % 2 === 0) {console.log('even')} else {console.log('odd')}
+}
 
-/* ESERCIZIO 4
- Crea una variable di nome "x" e assegna ad essa il numero 12.
+//ESERCIZI EXTRA NON OBBLIGATORI
+
+/* ESERCIZIO EXTRA 1
+  Scrivi un algoritmo per verificare che, dati due numeri interi, il valore di uno di essi sia 8 oppure se la loro addizione/sottrazione sia uguale a 8.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-let x = 12
+let nav = 8
+let numE = 20
 
+if (nav === 8 || numE === 8) {
+    console.log('one of the numbers is 8')
+}
+if ((nav + numE === 8)||Math.abs(nav - numE ===8))
+{
+    console.log('+ o - sono uguali a 8')
+}
 
-/* ESERCIZIO 5
- Crea una variable chiamata "name" e assegna ad essa il tuo nome, sotto forma di stringa.
+/* ESERCIZIO EXTRA 2
+Stai lavorando su un sito di e-commerce. Stai salvando il saldo totale del carrello dell'utente in una variabile "totalShoppingCart".
+C'Ã¨ una promozione in corso: se il totale del carrello supera 50, l'utente ha diritto alla spedizione gratuita (altrimenti la spedizione ha un costo fisso pari a 10).
+Crea un algoritmo che determini l'ammontare totale che deve essere addebitato all'utente per il checkout.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-let name = "Giorgio"
+function shoppingCart() {
+    let totalShoppingCart = 0
+    let shippingCost = 10
+    let article;
 
-/* ESERCIZIO 6
- Esegui una sottrazione tra i numeri 4 e la variable "x" appena dichiarata (che contiene il numero 12).
+
+
+do {
+    article = parseInt(prompt('insert article price. Enter 0 to check price'));
+    totalShoppingCart += article
+    console.log(`the partial price is ${totalShoppingCart}`)
+} while (article !== 0)
+    console.log(`total price is ${totalShoppingCart}`);
+}
+
+
+
+
+
+/* ESERCIZIO EXTRA 3
+  Oggi Ã¨ il Black Friday e viene applicato il 20% su ogni prodotto.
+  Modifica la risposta precedente includendo questa nuova promozione nell'algoritmo, determinando, usando l'algoritmo del codice precedente, se le spedizioni siano gratuite oppure no e e calcolando il totale.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-console.log (x - 4)
+function shoppingCart() {
+  let totalShoppingCart = 0
+  let shippingCost = 10
+  let article;
+  let discount = 0.80;
 
-/* ESERCIZIO 7
- Crea due variabili: "name1" e "name2". Assegna a name1 la stringa "john", e assegna a name2 la stringa "John" (con la J maiuscola!).
- Verifica che name1 sia diversa da name2 (suggerimento: è la stessa cosa di verificare che la loro uguaglianza sia falsa).
- Infine, verifica che la loro uguaglianza diventi true se entrambe vengono trasformate in lowercase (senza cambiare il valore di name2!).
- NON HAI BISOGNO DI UN BLOCCO IF/ELSE. E' sufficiente utilizzare console.log().
+do {
+  article = parseInt(prompt('insert article price. Enter 0 to check price'));
+  if (article !== 0) {
+    let discountedPrice = article * discount;
+    totalShoppingCart += discountedPrice;
+    console.log(`partial price is ${totalShoppingCart}`)
+  }
+  
+} while (article !== 0)
+
+let shipping = totalShoppingCart > 50 ? 0 : shippingCost;
+let finalPrice = totalShoppingCart + shipping;
+console.log(`final price is $${finalPrice} (shipping: $${shipping})`)
+}
+
+
+/*  ESERCIZIO EXTRA 4
+  Usa un operatore ternaio per assegnare ad una variabile chiamata "gender" i valori "male" o "female".
+  La scelta deve essere basata sul valore di un'altra variabile booleana chiamata isMale.
+  Es. se isMale e' vero, il valore di gender deve essere "male"
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+let isMale = true 
+let gender = isMale ? 'male' : 'female';
 
-let name1 = 'john' 
-let name2 = 'John'
+console.log(`gender is ${gender}`);
 
-console.log (name1 !== name2)
-console.log(name1.toLowerCase() === name2.toLowerCase())
+/* ESERCIZIO EXTRA 5
+  Scrivi un algoritmo che iteri i numeri da 1 a 100, stampandoli in console. Se un valore tuttavia Ã¨ multiplo di 3 (operatore modulo!), stampa al suo posto la parola "Fizz" e se il numero Ã¨ multiplo di 5, stampa "Buzz". Se le condizioni si verificano entrambe, stampa "FizzBuzz".
+*/
+
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log('FizzBuzz'); 
+  } else if (i % 3 === 0) {
+    console.log('Fizz');
+  } else if (i % 5 === 0) {
+    console.log('buzz');
+  } else {
+    console.log(i)
+  }
+}
+  
