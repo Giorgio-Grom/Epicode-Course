@@ -1,169 +1,79 @@
-//ESERCIZI SUGLI IF: 
-
-/* ESERCIZIO 1
- Scrivi un algoritmo per trovare il piÃ¹ grande tra due numeri interi.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-let number = 10
-let numberOne = 20
-
-if (number > numberOne) {
-    console.log('number is greater')
-} else {
-    console.log('number is lower')
-}
-
+// Carrello e sconti particolari
 
 /*
-ESERCIZIO 2
-  Crea un blocco condizionale if/else per mostrare in console il messaggio corretto in ogni condizione.
+Oggi il tuo compito è creare la logica per un sito di e-commerce che deve supportare sconti extra per utenti speciali.
+A partire da una lista di prezzi, un utente e un costo di spedizione l'algoritmo deve determinare il costo totale del carrello.
+ATTENZIONE! Gli argomenti di questa settimana sono cruciali per lo svolgimento di un lavoro di un developer (il 90% del dati che maneggerai saranno array di oggetti!!) quindi 
+assicurati di COMPRENDERE la logica. Se ti trovi in difficolta', scrivi ad un membro del teaching staff! :) 
 
-  num < 5 - mostra in console "Tiny"
-  num < 10 - mostra in console "Small"
-  num < 15 - mostra in console "Medium"
-  num < 20 - mostra in console "Large"
-  num >= 20 - mostra in console "Huge"
+Se l'utente ha la proprietà "isAmbassador" con valore true, il carrello deve venire scontato del 30%, PRIMA di calcolare la spedizione (anche gli utenti speciali pagano le spedizioni).
+Se l'utente ha la proprietà "isAmbassador" con valore false, il carrello NON deve venire scontato.
+In entrambi i casi, la spedizione è gratuita per ogni carrello con costo superiore a 100. Altrimenti, aggiungi il valore fornito per coprire il costo della spedizione.
+
+In basso troverai degli esempi di utenti, una lista prezzi e un costo fisso di spedizione.
+Crea un array di utenti (usando .push) e stampa, per ogni utente (quindi con un loop) la frase "NOMEUTENTE COGNOMEUTENTE e' / non e' un ambassador" basandoti sui dati contenuti nell'oggetto. 
+ES. L'utente Marco Rossi e' un ambassador, quindi la frase dovrebbe essere "Marco Rossi e' un ambassador"
+Infine, crea un SECONDO array in cui inserirai SOLO gli ambassador.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-let num = 12
-
-if (num < 5) {
-    console.log('tiny');
-} else if (num < 10) {
-    console.log('Small');
-} else if (num < 15) {
-    console.log ('medium');
-} else if (num < 20) {
-    console.log ('Large');
-} else {
-    console.log('Huge')
+const marco = {
+  name: "Marco",
+  lastName: "Rossi",
+  isAmbassador: true,
 }
 
-
-//ESERCIZI SUI CICLI: 
-
-/* ESERCIZIO 3
-  Mostra i numeri da 0 a 10 (incluso) in ordine ascendente, ma evitando di mostrare i numeri 3 e 8 (suggerimento: ripassa l'uso di "continue").
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-for (let num = 0 ; num <= 10 ; num++) {
-    if (num === 3 || num === 8) { continue } console.log(num)
+const paul = {
+  name: "Paul",
+  lastName: "Flynn",
+  isAmbassador: false,
 }
 
-/* ESERCIZIO 11
-  Scrivi un ciclo in JavaScript per iterare da 0 a 15. Per ciascun elemento, il ciclo deve controllare the il valore corrente sia pari o dispari, e mostrare il risultato in console.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-for (let num = 0; num <= 15 ; num++){
-    if (num % 2 === 0) {console.log('even')} else {console.log('odd')}
+const amy = {
+  name: "Amy",
+  lastName: "Reed",
+  isAmbassador: false,
 }
 
-//ESERCIZI EXTRA NON OBBLIGATORI
+const prices = [34, 5, 2]
+const shippingCost = 50
+let utenteCheEffettuaLAcquisto = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
 
-/* ESERCIZIO EXTRA 1
-  Scrivi un algoritmo per verificare che, dati due numeri interi, il valore di uno di essi sia 8 oppure se la loro addizione/sottrazione sia uguale a 8.
-*/
+/* Calculate price */ 
 
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-let nav = 8
-let numE = 20
-
-if (nav === 8 || numE === 8) {
-    console.log('one of the numbers is 8')
+let carrelloPrice = 0
+for (let i = 0 ; i < prices.length; i++) {
+  const prezzo = prices[i];
+  carrelloPrice += prices [i];
 }
-if ((nav + numE === 8)||Math.abs(nav - numE ===8))
-{
-    console.log('+ o - sono uguali a 8')
+if (utenteCheEffettuaLAcquisto.isAmbassador) {
+  carrelloPrice = (carrelloPrice * 30) / 100; 
 }
 
-/* ESERCIZIO EXTRA 2
-Stai lavorando su un sito di e-commerce. Stai salvando il saldo totale del carrello dell'utente in una variabile "totalShoppingCart".
-C'Ã¨ una promozione in corso: se il totale del carrello supera 50, l'utente ha diritto alla spedizione gratuita (altrimenti la spedizione ha un costo fisso pari a 10).
-Crea un algoritmo che determini l'ammontare totale che deve essere addebitato all'utente per il checkout.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-function shoppingCart() {
-    let totalShoppingCart = 0
-    let shippingCost = 10
-    let article;
-
-
-
-do {
-    article = parseInt(prompt('insert article price. Enter 0 to check price'));
-    totalShoppingCart += article
-    console.log(`the partial price is ${totalShoppingCart}`)
-} while (article !== 0)
-    console.log(`total price is ${totalShoppingCart}`);
+if (carrelloPrice <= 100) {
+  carrelloPrice += shippingCost;
 }
 
+const allUsers = []
+
+allUsers.push(marco, paul, amy);
 
 
-
-
-/* ESERCIZIO EXTRA 3
-  Oggi Ã¨ il Black Friday e viene applicato il 20% su ogni prodotto.
-  Modifica la risposta precedente includendo questa nuova promozione nell'algoritmo, determinando, usando l'algoritmo del codice precedente, se le spedizioni siano gratuite oppure no e e calcolando il totale.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-function shoppingCart() {
-  let totalShoppingCart = 0
-  let shippingCost = 10
-  let article;
-  let discount = 0.80;
-
-do {
-  article = parseInt(prompt('insert article price. Enter 0 to check price'));
-  if (article !== 0) {
-    let discountedPrice = article * discount;
-    totalShoppingCart += discountedPrice;
-    console.log(`partial price is ${totalShoppingCart}`)
+for (let i = 0; i < allUsers.length; i++) {
+  const user = allUsers[i]
+  let stringBase = `${user.name} ${user.lastName} `;
+  if (!user.isAmbassador) {
+    stringBase += 'non'
   }
-  
-} while (article !== 0)
-
-let shipping = totalShoppingCart > 50 ? 0 : shippingCost;
-let finalPrice = totalShoppingCart + shipping;
-console.log(`final price is $${finalPrice} (shipping: $${shipping})`)
+  stringBase += 'is an ambassador'
+  console.log(stringBase)
 }
 
-
-/*  ESERCIZIO EXTRA 4
-  Usa un operatore ternaio per assegnare ad una variabile chiamata "gender" i valori "male" o "female".
-  La scelta deve essere basata sul valore di un'altra variabile booleana chiamata isMale.
-  Es. se isMale e' vero, il valore di gender deve essere "male"
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-let isMale = true 
-let gender = isMale ? 'male' : 'female';
-
-console.log(`gender is ${gender}`);
-
-/* ESERCIZIO EXTRA 5
-  Scrivi un algoritmo che iteri i numeri da 1 a 100, stampandoli in console. Se un valore tuttavia Ã¨ multiplo di 3 (operatore modulo!), stampa al suo posto la parola "Fizz" e se il numero Ã¨ multiplo di 5, stampa "Buzz". Se le condizioni si verificano entrambe, stampa "FizzBuzz".
-*/
-
-for (let i = 1; i <= 100; i++) {
-  if (i % 3 === 0 && i % 5 === 0) {
-    console.log('FizzBuzz'); 
-  } else if (i % 3 === 0) {
-    console.log('Fizz');
-  } else if (i % 5 === 0) {
-    console.log('buzz');
-  } else {
-    console.log(i)
+let ambassArray = []
+for (let i = 0; i <allUsers.length; i++){
+  const user = allUsers[i] 
+  if (user.isAmbassador) {
+    ambassArray.push(user)
   }
 }
-  
+
+console.log(ambassArray)
