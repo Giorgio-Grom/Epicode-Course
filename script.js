@@ -1,79 +1,121 @@
-// Carrello e sconti particolari
-
-/*
-Oggi il tuo compito è creare la logica per un sito di e-commerce che deve supportare sconti extra per utenti speciali.
-A partire da una lista di prezzi, un utente e un costo di spedizione l'algoritmo deve determinare il costo totale del carrello.
-ATTENZIONE! Gli argomenti di questa settimana sono cruciali per lo svolgimento di un lavoro di un developer (il 90% del dati che maneggerai saranno array di oggetti!!) quindi 
-assicurati di COMPRENDERE la logica. Se ti trovi in difficolta', scrivi ad un membro del teaching staff! :) 
-
-Se l'utente ha la proprietà "isAmbassador" con valore true, il carrello deve venire scontato del 30%, PRIMA di calcolare la spedizione (anche gli utenti speciali pagano le spedizioni).
-Se l'utente ha la proprietà "isAmbassador" con valore false, il carrello NON deve venire scontato.
-In entrambi i casi, la spedizione è gratuita per ogni carrello con costo superiore a 100. Altrimenti, aggiungi il valore fornito per coprire il costo della spedizione.
-
-In basso troverai degli esempi di utenti, una lista prezzi e un costo fisso di spedizione.
-Crea un array di utenti (usando .push) e stampa, per ogni utente (quindi con un loop) la frase "NOMEUTENTE COGNOMEUTENTE e' / non e' un ambassador" basandoti sui dati contenuti nell'oggetto. 
-ES. L'utente Marco Rossi e' un ambassador, quindi la frase dovrebbe essere "Marco Rossi e' un ambassador"
-Infine, crea un SECONDO array in cui inserirai SOLO gli ambassador.
+/* ESERCIZIO 1
+ Scrivi una funzione chiamata "crazySum" che riceve due numeri interi come parametri.
+ La funzione deve ritornare la somma di quei due valori, ma se il loro valore è lo stesso allora deve ritornare la loro somma moltiplicata per 3.
 */
 
-const marco = {
-  name: "Marco",
-  lastName: "Rossi",
-  isAmbassador: true,
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+function crazySum(num1,num2){
+    if (num1 === num2) {
+        return (num1 + num2) * 3;}
+        else {
+            return num1 + num2;
+        }
+    }
+
+
+console.log (crazySum(3,3))
+
+/* ESERCIZIO 2
+ Scrivi una funzione chiamata "boundary", che accetta un numero intero come parametro e ritorna true se tale parametro è incluso tra 20 e 100 (incluso) o se è esattamente uguale a 400.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+function boundary (n) {
+    if (n >= 20 && n <=100 || n === 400) {
+        return true
+    } else {
+        return false
+    }
 }
 
-const paul = {
-  name: "Paul",
-  lastName: "Flynn",
-  isAmbassador: false,
+console.log(boundary(8))
+
+
+/* ESERCIZIO 3
+ Scrivi una funzione chiamata "reverseString", che accetta una stringa come parametro e la ritorna invertita (es.: EPICODE => EDOCIPE).
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+function reverseString (str) {
+    return str.split ("").reverse("").join("")
 }
 
-const amy = {
-  name: "Amy",
-  lastName: "Reed",
-  isAmbassador: false,
+console.log (reverseString("ciao"))
+
+/* ESERCIZIO 4
+ Scrivi una funzione chiamata "upperFirst", che accetta una stringa come parametro e la ritorna rendendo maiuscola ogni lettera iniziale di ogni parola.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+function upperFirst (str) {
+    const words = str.split(' ')
+    const capitalizedWords = words.map(function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    return capitalizedWords.join('')
 }
 
-const prices = [34, 5, 2]
-const shippingCost = 50
-let utenteCheEffettuaLAcquisto = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
+console.log (upperFirst ('hello world'))
 
-/* Calculate price */ 
+/* ESERCIZIO 5
+ Scrivi una funzione chiamata "giveMeRandom", che accetta come parametro un numero chiamato n e ritorna un array contenente n numeri random contenuti tra 0 e 10.
+*/
 
-let carrelloPrice = 0
-for (let i = 0 ; i < prices.length; i++) {
-  const prezzo = prices[i];
-  carrelloPrice += prices [i];
-}
-if (utenteCheEffettuaLAcquisto.isAmbassador) {
-  carrelloPrice = (carrelloPrice * 30) / 100; 
-}
+/* SCRIVI QUI LA TUA RISPOSTA */
 
-if (carrelloPrice <= 100) {
-  carrelloPrice += shippingCost;
+function giveMeRandom (n) {
+    let randomNumbers = [];
+
+    for (let i = 0; i < n; i++) {
+        randomNumbers.push(Math.random() * 10);
+    }
+    return randomNumbers;
 }
 
-const allUsers = []
+console.log (giveMeRandom(5))
 
-allUsers.push(marco, paul, amy);
+//EXTRA:
+/* ESERCIZIO 1
+ Scrivi una funzione chiamata "area" che riceve due parametri (l1, l2) e calcola l'area del rettangolo associato.
+*/
 
+/* SCRIVI QUI LA TUA RISPOSTA */
 
-for (let i = 0; i < allUsers.length; i++) {
-  const user = allUsers[i]
-  let stringBase = `${user.name} ${user.lastName} `;
-  if (!user.isAmbassador) {
-    stringBase += 'non'
-  }
-  stringBase += 'is an ambassador'
-  console.log(stringBase)
+function area (l1,l2) {
+    return l1 * l2
 }
 
-let ambassArray = []
-for (let i = 0; i <allUsers.length; i++){
-  const user = allUsers[i] 
-  if (user.isAmbassador) {
-    ambassArray.push(user)
-  }
-}
+console.log(area(6,9))
 
-console.log(ambassArray)
+/* ESERCIZIO 2
+ Scrivi una funzione chiamata "crazyDiff" che calcola la differenza assoluta tra un numero fornito e 19.
+ Se il valore calcolato è più grande di 19, la funzione deve tornare tale risultato moltiplicato per 3.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+
+/* ESERCIZIO 3
+ Scrivi una funzione chiamata "codify" che accetta una stringa come parametro.
+ La funzione deve aggiungere la parola "code" all'inizio della stringa fornita e ritornare il risultato, ma se la stringa fornita comincia proprio con "code" allora deve ritornarla senza modifiche.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+/* ESERCIZIO 4
+ Scrivi una funzione chiamata "check3and7" la quale accetta un numero intero positivo come parametro.
+ La funzione deve controllare che tale parametro sia un multiplo di 3 o di 7, e in tal caso tornare true; altrimenti deve tornare false.
+ SUGGERIMENTO: operatore modulo
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+/* ESERCIZIO 5
+ Scrivi una funzione chiamata "cutString", che accetta una stringa come parametro e la ritorna senza il primo e l'ultimo carattere.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
